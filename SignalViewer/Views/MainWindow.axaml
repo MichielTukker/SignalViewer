@@ -23,18 +23,7 @@
         <uc:ProjectView Grid.Column="1" DataContext="{Binding ProjectView}"/>
 
         <GridSplitter Grid.Column="2" Background="Black" ResizeDirection="Columns"/>
-        <TreeDataGrid Grid.Column="3" Source="{Binding Source}"/>
-        <!-- <DataGrid AutoGenerateColumns="False" -->
-        <!--           CanUserResizeColumns="True" -->
-        <!--           IsReadOnly="False" -->
-        <!--           IsVisible="True" -->
-        <!--           Margin="12" -->
-        <!--           Items="{Binding Data}"> -->
-        <!--     <ItemsRepeater Items="{Binding _measurement.Columns}"> -->
-        <!--          -->
-        <!--     </ItemsRepeater> -->
-        <!--      -->
-        <!-- </DataGrid> -->
+        <uc:MeasurementView Grid.Column="3"></uc:MeasurementView>
 
     </Grid>
 </Window>

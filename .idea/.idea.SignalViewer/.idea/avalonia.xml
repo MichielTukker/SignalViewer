@@ -3,7 +3,10 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="SignalViewer/Views/DataChartView.axaml" value="SignalViewer/SignalViewer.csproj" />
+        <entry key="SignalViewer/Views/DataTableView.axaml" value="SignalViewer/SignalViewer.csproj" />
         <entry key="SignalViewer/Views/MainWindow.axaml" value="SignalViewer/SignalViewer.csproj" />
+        <entry key="SignalViewer/Views/MeasurementView.axaml" value="SignalViewer/SignalViewer.csproj" />
         <entry key="SignalViewer/Views/ProjectView.axaml" value="SignalViewer/SignalViewer.csproj" />
       </map>
     </option>
