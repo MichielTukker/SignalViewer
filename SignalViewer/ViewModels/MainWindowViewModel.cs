@@ -31,6 +31,8 @@ public class MainWindowViewModel : ViewModelBase
             var t = column.GetType();
             Source.Columns.Add(new TextColumn<Sample, double>($"{column.Name}", x => x.Data[column.Index]));
         }
+
+        var m = new MeasurementSettings(@"C:\2_src\data\shockslugs\ShockSlugs004.set");
     }
     public string Greeting => "Welcome to Avalonia!";
 }
