@@ -9,6 +9,8 @@ namespace SignalViewer.Models.MeasurementData;
 public class Measurement
 {
     private Frame<int, string> _dataset { get; set; } = Frame.CreateEmpty<int, string>();
+    
+    private string fullpath = string.Empty;
     private readonly string _basefilename = "No data";
     private readonly MeasurementSettings _settings = new MeasurementSettings();
     public DateTime StartDateTime { get; set; }
@@ -29,11 +31,12 @@ public class Measurement
     public bool BinaryRawExists = false;
 
     public Measurement()
-    {
+    { // empty constructor wich creates an empty measurement object. only useful for opening an empty UI.
     }
     public Measurement(string filename)
     {
-        var fname = filename.ToLower();
+        var fname = Path.GetFileName(filename);
+        fullpath = Path.GetFullPath(filename);
         if(fname.EndsWith(".set") ||fname.EndsWith(".asc") || fname.EndsWith(".raw")||fname.EndsWith(".bin"))
         {
             _basefilename = fname.Substring(0, filename.Length - 4);
@@ -99,6 +102,8 @@ public class Measurement
         _dataset.AddColumn(_settings.TimeIndexName, timeIndex.ToOrdinalSeries());
         foreach (var channel in _settings.Channels)
         {
+            if (string.IsNullOrEmpty(channel.Name))
+                throw new InvalidDataException("Channel name not initialized");
             var series = dflocal[channel.Name].Values
                 .Select(n => 
                     ((n * n * channel.C2) + (channel.C1 * n) + channel.C0));

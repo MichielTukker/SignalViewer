@@ -37,6 +37,8 @@ public partial class DataChartView : ReactiveUserControl<DataChartViewModel>
 
     private void update_chart()
     {
+        if(vm==null)
+            return;
         if (avaPlot1 == null)
         {
             avaPlot1= this.Find<AvaPlot>("AvaPlot1") ?? throw new InvalidOperationException();    
