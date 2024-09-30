@@ -42,13 +42,16 @@ public partial class DataChartView : ReactiveUserControl<DataChartViewModel>
             avaPlot1= this.Find<AvaPlot>("AvaPlot1") ?? throw new InvalidOperationException();    
         }
         avaPlot1.Plot.Clear();
-        var datax = vm.CurrentMeasurement.getX();
-        var datay = vm.CurrentMeasurement.getY();
-        
         avaPlot1.Plot.XLabel("Time (s)");
         avaPlot1.Plot.YLabel("Output (units)");
         avaPlot1.Plot.Title(vm.CurrentMeasurement.Name);
-        avaPlot1.Plot.Add.Scatter(datax,datay);
+
+        if (!vm.CurrentMeasurement.IsEmpty)
+        {
+            var datax = vm.CurrentMeasurement.GetTimeSeries();
+            var datay = vm.CurrentMeasurement.GetSeries("WHM2");
+            avaPlot1.Plot.Add.Scatter(datax,datay);
+        }
         avaPlot1.Refresh();
     }
 }

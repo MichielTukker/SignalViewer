@@ -36,7 +36,8 @@ public class MainViewModel : ViewModelBase
     public MainViewModel()
     {
         ProjectView = new ProjectViewModel();
-        CurrentMeasurement = new Measurement(@"c:\2_src\data\shockslugs\ShockSlugs004.set");
+        CurrentMeasurement = new Measurement();
+        // CurrentMeasurement = new Measurement(@"c:\2_src\data\shockslugs\ShockSlugs004.set");
         
         Debug.Assert(_measurement!=null);
         MeasurementDisplay = new MeasurementViewModel(this);

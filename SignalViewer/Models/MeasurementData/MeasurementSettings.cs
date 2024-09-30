@@ -6,13 +6,17 @@ namespace SignalViewer.Models.MeasurementData;
 public class MeasurementSettings
 {
     public readonly List<Channel> Channels = new List<Channel>();
-    public string Version { get; private set; }
-    public int NumberOfChannels { get; private set; }
-    public double SampleFrequency { get; private set; }
-    public int NumberOfRows { get; private set; }
+    public string Version { get; private set; } = string.Empty;
+    public int NumberOfChannels { get; private set; } = 0;
+    public double SampleFrequency { get; private set; } = 0;
+    public int NumberOfRows { get; private set; } = 0;
     public string TimeIndexName { get; private set; } = "Time (s)";
 
-    private IniFile _iniFile;
+    private IniFile _iniFile = new IniFile();
+
+    public MeasurementSettings()
+    {
+    }
 
     public MeasurementSettings(string filename)
     {

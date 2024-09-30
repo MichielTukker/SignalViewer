@@ -15,20 +15,22 @@ public class IniFile
         Parse(Filename);
     }
 
-    public string Filename { get; private set; }
-    // public readonly List<IniSection> Sections = new List<IniSection>();
-
-    private readonly Dictionary<string, Dictionary<string, IniValue>> Sections =
+    public IniFile()
+    {
+    }
+    
+    public string Filename { get; private set; } = string.Empty;
+    private readonly Dictionary<string, Dictionary<string, IniValue>> _sections =
         new Dictionary<string, Dictionary<string, IniValue>>();
 
-    public Dictionary<string,IniValue> this[string key] => Sections[key];
+    public Dictionary<string,IniValue> this[string key] => _sections[key];
 
     public override string ToString()
     {
         var data = new StringBuilder();
-        data.Append(SectionToString(Sections["_"]));
+        data.Append(SectionToString(_sections["_"]));
 
-        foreach (var item in Sections)
+        foreach (var item in _sections)
         {
             if(item.Key=="_")
                 continue;
@@ -51,7 +53,7 @@ public class IniFile
     {
         const Int32 bufferSize = 4096;
         var currentSection = new Dictionary<string, IniValue>();
-        Sections.Add("_",currentSection);
+        _sections.Add("_",currentSection);
         using (var fileStream = File.OpenRead(filename))
         {
             using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, bufferSize))
@@ -71,7 +73,7 @@ public class IniFile
                     {
                         //new section
                         currentSection = new Dictionary<string, IniValue>();
-                        Sections.Add(line.Substring(1, line.Length - 2), currentSection);
+                        _sections.Add(line.Substring(1, line.Length - 2), currentSection);
                     }
                     else
                     {
@@ -88,6 +90,6 @@ public class IniFile
 
     public List<string> GetSectionTitles()
     {
-        return Sections.Keys.ToList();
+        return _sections.Keys.ToList();
     }
 }

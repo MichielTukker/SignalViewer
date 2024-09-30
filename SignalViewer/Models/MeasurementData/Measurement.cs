@@ -9,10 +9,12 @@ namespace SignalViewer.Models.MeasurementData;
 public class Measurement
 {
     private Frame<int, string> _dataset { get; set; } = Frame.CreateEmpty<int, string>();
-    private readonly string _basefilename;
-    private readonly MeasurementSettings _settings;
-
+    private readonly string _basefilename = "No data";
+    private readonly MeasurementSettings _settings = new MeasurementSettings();
     public DateTime StartDateTime { get; set; }
+
+    public bool IsEmpty { get; private set; } = true;
+    public bool DataAvailable { get; private set; } = false;
 
     public string Name
     {
@@ -26,6 +28,9 @@ public class Measurement
     public bool AsciiUnitExists = false;
     public bool BinaryRawExists = false;
 
+    public Measurement()
+    {
+    }
     public Measurement(string filename)
     {
         var fname = filename.ToLower();
@@ -37,14 +42,12 @@ public class Measurement
         {
             _basefilename = fname;
         }
-        _settings = new MeasurementSettings(_basefilename+".set");
-
         AsciiRawExists = File.Exists(_basefilename + ".raw");
         AsciiUnitExists = File.Exists(_basefilename + ".asc");
         BinaryRawExists = File.Exists(_basefilename + ".bin");
 
-        // _dataset = ReadAsciiRawFile();
-        ReadAsciiRawFile();
+        _settings = new MeasurementSettings(_basefilename+".set");
+        LoadData();
         
         //TODO  logic for reading ascii files vs raw files
         // if (AsciiUnitExists)
@@ -60,14 +63,23 @@ public class Measurement
         // }
     }
 
-    public double[] getX()
+    private void LoadData()
     {
-        return _dataset[_settings.TimeIndexName].Values.ToArray();
+        ReadAsciiRawFile();
+        IsEmpty = false;
+        DataAvailable = true;
     }
 
-    public double[] getY()
+    public double[] GetTimeSeries()
     {
-        return _dataset["WHM2"].Values.ToArray();
+        return GetSeries(_settings.TimeIndexName);
+    }
+
+    public double[] GetSeries(string channel)
+    {
+        if(!DataAvailable)
+            LoadData();
+        return _dataset[channel].Values.ToArray();
     }
 
     private void ReadAsciiRawFile()
