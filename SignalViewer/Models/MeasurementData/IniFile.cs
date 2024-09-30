@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
-using SignalViewer.Services.Models;
 
-namespace SignalViewer.Models;
+namespace SignalViewer.Models.MeasurementData;
 
 
 public class IniFile
@@ -12,6 +12,7 @@ public class IniFile
     public IniFile(string filename)
     {
         Filename = filename;
+        Parse(Filename);
     }
 
     public string Filename { get; private set; }
@@ -46,14 +47,11 @@ public class IniFile
         return output;
     }
 
-    public static IniFile Parse(string filename)
+    private void Parse(string filename)
     {
         const Int32 bufferSize = 4096;
-
-        IniFile target = new IniFile(filename);
-        
         var currentSection = new Dictionary<string, IniValue>();
-        target.Sections.Add("_",currentSection);
+        Sections.Add("_",currentSection);
         using (var fileStream = File.OpenRead(filename))
         {
             using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, bufferSize))
@@ -73,7 +71,7 @@ public class IniFile
                     {
                         //new section
                         currentSection = new Dictionary<string, IniValue>();
-                        target.Sections.Add(line.Substring(1, line.Length - 2), currentSection);
+                        Sections.Add(line.Substring(1, line.Length - 2), currentSection);
                     }
                     else
                     {
@@ -86,7 +84,10 @@ public class IniFile
                 }
             }
         }
-        return target;
     }
 
+    public List<string> GetSectionTitles()
+    {
+        return Sections.Keys.ToList();
+    }
 }

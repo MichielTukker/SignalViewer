@@ -11,8 +11,8 @@ public class ProjectViewModel : ViewModelBase
     {
         Items = new ObservableCollection<Node>();
 
-        Node rootNode = new Node("Blabla");
-        rootNode.Subfolders = new ObservableCollection<Node>(){new Node("item1"), new Node("Item2"), new Node("Item3"), new Node("Item4"), new Node("Item5"), new Node("Item6")};
+        Node rootNode = new Node("Project");
+        rootNode.Subfolders = new ObservableCollection<Node>(){new Node("Empty")};
         Items.Add(rootNode);
         SelectedItems = new ObservableCollection<Node>();
    

@@ -1,5 +1,6 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:SignalViewer.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:uc="clr-namespace:SignalViewer.Views"
@@ -46,16 +47,18 @@
     <!--     </Style> -->
     <!-- -->
     <!-- </UserControl.Styles> -->
-    
+    <Design.DataContext>
+        <vm:MeasurementViewModel />
+    </Design.DataContext>
     <Grid><TabControl>
         <TabItem Header="Graph" VerticalContentAlignment="Center">
-            <uc:DataChartView Grid.Column="1" DataContext="{Binding ChartView}"/>
+            <uc:DataChartView Grid.Column="1" DataContext="{Binding ChartViewModel}"/>
         </TabItem>
         <TabItem>
             <TabItem.Header>
                 <TextBlock VerticalAlignment="Center">Table</TextBlock>
             </TabItem.Header>
-            <uc:DataTableView Grid.Column="1" DataContext="{Binding TableView}"/>
+            <uc:DataTableView Grid.Column="1" DataContext="{Binding TableViewModel}"/>
         </TabItem>
     </TabControl></Grid>
 </UserControl>
