@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalViewer", "SignalViewer\SignalViewer.csproj", "{04A809E3-7E40-4938-B81D-FC9E441D4008}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalViewer.Wpf", "SignalViewer.Wpf\SignalViewer.Wpf.csproj", "{04A809E3-7E40-4938-B81D-FC9E441D4008}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
