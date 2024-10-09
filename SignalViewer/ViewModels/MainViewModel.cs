@@ -2,17 +2,13 @@
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using Avalonia.Controls;
-using Avalonia.Controls.Models.TreeDataGrid;
-using Avalonia.Data;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using ReactiveUI;
 using SignalViewer.Models;
 using SignalViewer.Models.MeasurementData;
 
 namespace SignalViewer.ViewModels;
 
-public class MainViewModel : ViewModelBase
+public class MainViewModel : ReactiveObject, IMainViewModel
 {
     
     public ProjectViewModel ProjectView { get; set; }
@@ -22,12 +18,16 @@ public class MainViewModel : ViewModelBase
 
     // public FlatTreeDataGridSource<Sample> Source { get; }
 
-    public MainViewModel()
+    public MainViewModel(IScreen? screen)
     {
+        HostScreen = screen ?? throw new ArgumentNullException(nameof(screen));
+        // ProjectView = projectViewModel;
+        // MeasurementDisplay = measurementViewModel;
         ProjectView = new ProjectViewModel();
-        
         MeasurementDisplay = new MeasurementViewModel(this);
-
        
     }
+
+    public string? UrlPathSegment => String.Empty;
+    public IScreen HostScreen { get; }
 }

@@ -1,10 +1,11 @@
 ﻿using System;
+using ReactiveUI;
 using SignalViewer.Models;
 using SignalViewer.Models.MeasurementData;
 
 namespace SignalViewer.ViewModels;
 
-public class DataChartViewModel: ViewModelBase
+public class DataChartViewModel: ReactiveObject
 {
     public Measurement CurrentMeasurement => _parent.CurrentMeasurement;
     public event EventHandler? ChartDataChanged;

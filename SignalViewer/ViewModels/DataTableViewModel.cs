@@ -1,10 +1,9 @@
-﻿using Avalonia.Controls;
-using Avalonia.Controls.Models.TreeDataGrid;
+﻿using ReactiveUI;
 using SignalViewer.Models;
 
 namespace SignalViewer.ViewModels;
 
-public class DataTableViewModel: ViewModelBase
+public class DataTableViewModel: ReactiveObject
 {
     private MainViewModel _parent;
     public DataTableViewModel(MainViewModel parent)

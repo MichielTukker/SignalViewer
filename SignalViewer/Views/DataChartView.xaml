@@ -1,0 +1,17 @@
+﻿<reactiveUi:ReactiveUserControl x:Class="SignalViewer.Views.DataChartView"
+                                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                xmlns:local="clr-namespace:SignalViewer.Views"
+                                xmlns:vm="clr-namespace:SignalViewer.ViewModels"
+                                xmlns:uc="clr-namespace:SignalViewer.Views"
+                                xmlns:scottPlot="clr-namespace:ScottPlot.WPF;assembly=ScottPlot.WPF"
+                                xmlns:reactiveUi="http://reactiveui.net"
+                                x:TypeArguments="vm:DataChartViewModel"
+                                mc:Ignorable="d"
+                                d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <scottPlot:WpfPlot Name="WpfPlot1"/>
+    </Grid>
+</reactiveUi:ReactiveUserControl>

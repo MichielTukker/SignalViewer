@@ -1,9 +1,10 @@
-﻿using SignalViewer.Models;
+﻿using ReactiveUI;
+using SignalViewer.Models;
 using SignalViewer.Models.MeasurementData;
 
 namespace SignalViewer.ViewModels;
 
-public class MeasurementViewModel: ViewModelBase
+public class MeasurementViewModel: ReactiveObject
 {
     public Measurement CurrentMeasurement => _parent.CurrentMeasurement;
     public DataChartViewModel ChartViewModel { get; set; }

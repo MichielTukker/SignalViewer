@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace SignalViewer.Models.MeasurementData;
 
@@ -58,13 +59,11 @@ public class IniFile
         {
             using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, bufferSize))
             {
-                string? buffer;
-                string line;
-                int linecount = 0;
-                while ((buffer = streamReader.ReadLine()) != null)
+                var linecount = 0;
+                while (streamReader.ReadLine() is { } buffer)
                 {
                     linecount++;
-                    line = buffer.Trim();
+                    var line = buffer.Trim();
                     if (line.Contains("$$**")) //EOF character
                     {
                         break;
@@ -78,7 +77,7 @@ public class IniFile
                     else
                     {
                         // normal property
-                        var results = line.Split('=');
+                        var results = ReplaceWhitespace(line).Split('=');
                         if (results.Length != 2)
                             throw new InvalidOperationException($"Parsing error on line {linecount}: {line}");
                         currentSection.Add(results[0], new IniValue(results[0], results[1]));
@@ -86,6 +85,12 @@ public class IniFile
                 }
             }
         }
+    }
+    
+    private static readonly Regex sWhitespace = new Regex(@"\s+");
+    public static string ReplaceWhitespace(string input, string replacement="") 
+    {
+        return sWhitespace.Replace(input, replacement);
     }
 
     public List<string> GetSectionTitles()
