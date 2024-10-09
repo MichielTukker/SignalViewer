@@ -6,7 +6,7 @@ namespace SignalViewer.ViewModels;
 
 public class AppBootstrapper: ReactiveObject, IScreen
 {
-    public AppBootstrapper(IReadonlyDependencyResolver resolver = null, IMutableDependencyResolver dependencyResolver  = null, RoutingState testRouter = null)
+    public AppBootstrapper(IReadonlyDependencyResolver? resolver = null, IMutableDependencyResolver? dependencyResolver  = null, RoutingState? testRouter = null)
     {
         Router = testRouter ?? new RoutingState();
         resolver = resolver ?? Locator.Current;
@@ -15,7 +15,7 @@ public class AppBootstrapper: ReactiveObject, IScreen
         RegisterParts(dependencyResolver);
 
         // Navigate to the opening page of the application
-        Router.Navigate.Execute(resolver.GetService<IMainViewModel>()).Subscribe();
+        Router.Navigate.Execute(resolver.GetService<IMainViewModel>()!).Subscribe();
         
     }
     public RoutingState Router { get; }

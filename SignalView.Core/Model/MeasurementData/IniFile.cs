@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace SignalViewer.Models.MeasurementData;
+namespace SignalView.Core.Model.MeasurementData;
 
 
 public class IniFile

@@ -1,6 +1,6 @@
-﻿using SignalViewer.Models.MeasurementData;
+﻿using SignalView.Core.Model.MeasurementData;
 
-namespace SignalViewer.Models.ProjectItems;
+namespace SignalView.Core.Model.ProjectItems;
 
 public class ProjectRootNode : ProjectNode
 {

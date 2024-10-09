@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using Deedle;
 
-namespace SignalViewer.Models.MeasurementData;
+namespace SignalView.Core.Model.MeasurementData;
 
 public class Measurement
 {

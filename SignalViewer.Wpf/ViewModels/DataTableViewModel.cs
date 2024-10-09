@@ -1,5 +1,4 @@
 ﻿using ReactiveUI;
-using SignalViewer.Models;
 
 namespace SignalViewer.ViewModels;
 

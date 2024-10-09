@@ -3,8 +3,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using ReactiveUI;
-using SignalViewer.Models;
-using SignalViewer.Models.MeasurementData;
+using SignalView.Core.Model.MeasurementData;
 
 namespace SignalViewer.ViewModels;
 

@@ -7,7 +7,7 @@ namespace SignalViewer.Views;
 
 public partial class DataChartView 
 {
-    private DataChartViewModel? vm;
+    // private DataChartViewModel? vm;
 
     public DataChartView()
     {

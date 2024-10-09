@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SignalViewer.Models.MeasurementData;
+namespace SignalView.Core.Model.MeasurementData;
 
 public class MeasurementChannel
 {

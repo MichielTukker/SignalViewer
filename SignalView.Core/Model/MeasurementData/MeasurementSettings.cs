@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using static SignalViewer.Models.MeasurementData.MeasurementChannel;
+using static SignalView.Core.Model.MeasurementData.MeasurementChannel;
 
-namespace SignalViewer.Models.MeasurementData;
+namespace SignalView.Core.Model.MeasurementData;
 public class MeasurementSettings
 {
     public readonly List<Channel> Channels = new List<Channel>();

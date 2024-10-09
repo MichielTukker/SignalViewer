@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace SignalViewer.Models.MeasurementData;
+namespace SignalView.Core.Model.MeasurementData;
 
 public class IniValue
 {

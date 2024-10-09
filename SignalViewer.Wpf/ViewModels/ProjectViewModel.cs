@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.IO;
 using System.Reactive;
 using System.Windows.Input;
 using ReactiveUI;
-using SignalViewer.Models.ProjectItems;
+using SignalView.Core.Model.ProjectItems;
 
 namespace SignalViewer.ViewModels;
 
