@@ -11,7 +11,7 @@
                                  mc:Ignorable="d"
                                  d:DesignHeight="300" d:DesignWidth="300">
     <Grid><TabControl>
-        <TabItem Header="Graph" VerticalContentAlignment="Center">
+        <TabItem Header="Graph">
             <uc:DataChartView Grid.Column="1" DataContext="{Binding ChartViewModel}"/>
         </TabItem>
         <TabItem Header="Table" VerticalContentAlignment="Center">

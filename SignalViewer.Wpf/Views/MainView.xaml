@@ -11,16 +11,36 @@
                                 mc:Ignorable="d"
                                 d:DesignHeight="300" d:DesignWidth="300">
     <Grid Margin="4">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="5*" />
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
         
-        <uc:ProjectView Grid.Column="0" DataContext="{Binding ProjectView}"/>
+        <Menu Grid.Row="0"
+              Margin="5"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Stretch">
+            <MenuItem Header="File" />
+            <MenuItem Header="Settings" />
+            <MenuItem Header="Help" />
+        </Menu>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="5*" />
+            </Grid.ColumnDefinitions>
+            <uc:ProjectView Grid.Column="0" DataContext="{Binding ProjectView}"/>
 
-        <GridSplitter Grid.Column="1" Width="3" Background="Gray" ResizeDirection="Columns"/>
-        <uc:MeasurementView Grid.Column="2" DataContext="{Binding MeasurementDisplay}"></uc:MeasurementView>
-        
+            <GridSplitter Grid.Column="1" Width="3" Background="Gray" ResizeDirection="Columns"/>
+            <uc:MeasurementView Grid.Column="2" DataContext="{Binding MeasurementDisplay}"></uc:MeasurementView>
+        </Grid> 
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>MahApps.Metro DEMO Application</StatusBarItem>
+            <Separator Style="{StaticResource MahApps.Styles.Separator.StatusBar}" />
+            <StatusBarItem>Selected Tab:</StatusBarItem>
+            <StatusBarItem Content="{Binding ElementName=MainTabControl, Path=SelectedItem.Header, Mode=OneWay}" />
+        </StatusBar>   
     </Grid>
 </reactiveUi:ReactiveUserControl>

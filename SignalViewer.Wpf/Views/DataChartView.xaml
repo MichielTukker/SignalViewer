@@ -12,6 +12,7 @@
                                 mc:Ignorable="d"
                                 d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
+        <Label>Yada yada yada</Label>
         <scottPlot:WpfPlot Name="WpfPlot1"/>
     </Grid>
 </reactiveUi:ReactiveUserControl>
